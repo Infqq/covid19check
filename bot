@@ -10,7 +10,7 @@ def coronavirus_info():
     all = bs.find_all("td", class_="uMsnNd HAChlc")
 
     return all[0], all[2], all[3], all[4], all[6], all[7], all[28], all[30], all[31], all[8], all[10], all[11], all[16],all[18], all[19]
-bot=Bot('56a86396076a8af8e5aaa913c0d9e5112f0accc8db55eeee7fb1dac62d7a9e452fcdfcd7dbbd8b67901e3')
+bot=Bot('token')
 
 def main():
     @bot.on.message_handler(text=["Мир"],lower=True)
