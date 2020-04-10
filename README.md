@@ -1,6 +1,6 @@
-<h1 align="center">Covid-19 Check</h1>
+<h1 align="center">Covid-19 Check Bot</h1>
 <p align="center">
-    Бот, отправляющий данные о коронавирусе в определенных странах
+    Бот ВКонтакте, отправляющий данные о коронавирусе в определенных странах
  <p align="center">
     Библиотека бота: VKBottle
     <br /><br />
