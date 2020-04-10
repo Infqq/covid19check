@@ -2,6 +2,10 @@ from vkbottle import *
 from bs4 import BeautifulSoup
 import requests
 import time
+
+
+bot=Bot('token')
+
 def coronavirus_info():
     HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"}
     session = requests.Session()
@@ -10,36 +14,36 @@ def coronavirus_info():
     all = bs.find_all("td", class_="uMsnNd HAChlc")
 
     return all[0], all[2], all[3], all[4], all[6], all[7], all[28], all[30], all[31], all[8], all[10], all[11], all[16],all[18], all[19]
-bot=Bot('token')
 
-def main():
-    @bot.on.message_handler(text=["Мир"],lower=True)
-    async def wrapper(ans: Message):
-        await ans("Весь Мир:ᅠ\n \n Всего заболевших: " + str(info[0].text) + " \n ‍Выздоровело: " + str(info[1].text) + "\n Летальные исходы: " + str(info[2].text) + "\n Время: " + time.strftime("%H:%M"))
-    @bot.on.message_handler(text=["Сша"],lower=True)
-    async def wrapper(ans: Message):
-        await ans("США:ᅠ\n \n Всего заболевших: " + str(info[9].text) + " \n ‍Выздоровело: " + str(info[10].text) + "\n Летальные исходы: " + str(info[11].text) + "\n Время: " + time.strftime("%H:%M"))
-    @bot.on.message_handler(text=["Россия"],lower=True)
-    async def wrapper(ans: Message):
-        await ans("Россия:ᅠ\n \n Всего заболевших: " + str(info[3].text) + " \n ‍Выздоровело: " + str(info[4].text) + "\n Летальные исходы: " + str(info[5].text) + "\n Время: " + time.strftime("%H:%M"))
-    @bot.on.message_handler(text=["Китай"],lower=True)
-    async def wrapper(ans: Message):
-        await ans("Китай:ᅠ\n \n Всего заболевших: " + str(info[6].text) + " \n ‍Выздоровело: " + str(info[7].text) + "\n Летальные исходы: " + str(info[8].text) + "\n Время: " + time.strftime("%H:%M"))
-    @bot.on.message_handler(text=["Италия"],lower=True)
-    async def wrapper(ans: Message):
-        await ans("Италия:ᅠ\n \n Всего заболевших: " + str(info[12].text) + " \n ‍Выздоровело: " + str(info[13].text) + "\n Летальные исходы: " + str(info[14].text) + "\n Время: " + time.strftime("%H:%M"))
+@bot.on.message_handler(text=["Мир"],lower=True)
+async def wrapper(ans: Message):
+    await ans("Весь Мир:ᅠ\n \n Всего заболевших: " + str(info[0].text) + " \n ‍Выздоровело: " + str(info[1].text) + "\n Летальные исходы: " + str(info[2].text) + "\n Время: " + time.strftime("%H:%M"))
 
-    @bot.on.message_handler(text=["Меню", "Корона"],lower=True)
-    async def wrapper(ans: Message):
-        name1_buttons = [[{'text': f'Мир'},
-                {'text': f'Сша', 'color': 'positive'},
-                {'text': f'Россия', 'color': 'primary'}],
-                [{'text': f'Италия', 'color': 'negative'},
-                {'text': f'Китай', 'color': 'secondary'}]]
-        name12_keyboard = keyboard_gen(name1_buttons, one_time=False)
-        await ans('Выберите страну:', keyboard=name12_keyboard)
+@bot.on.message_handler(text=["Сша"],lower=True)
+async def wrapper(ans: Message):
+    await ans("США:ᅠ\n \n Всего заболевших: " + str(info[9].text) + " \n ‍Выздоровело: " + str(info[10].text) + "\n Летальные исходы: " + str(info[11].text) + "\n Время: " + time.strftime("%H:%M"))
 
+@bot.on.message_handler(text=["Россия"],lower=True)
+async def wrapper(ans: Message):
+    await ans("Россия:ᅠ\n \n Всего заболевших: " + str(info[3].text) + " \n ‍Выздоровело: " + str(info[4].text) + "\n Летальные исходы: " + str(info[5].text) + "\n Время: " + time.strftime("%H:%M"))
 
+@bot.on.message_handler(text=["Китай"],lower=True)
+async def wrapper(ans: Message):
+    await ans("Китай:ᅠ\n \n Всего заболевших: " + str(info[6].text) + " \n ‍Выздоровело: " + str(info[7].text) + "\n Летальные исходы: " + str(info[8].text) + "\n Время: " + time.strftime("%H:%M"))
+
+@bot.on.message_handler(text=["Италия"],lower=True)
+async def wrapper(ans: Message):
+    await ans("Италия:ᅠ\n \n Всего заболевших: " + str(info[12].text) + " \n ‍Выздоровело: " + str(info[13].text) + "\n Летальные исходы: " + str(info[14].text) + "\n Время: " + time.strftime("%H:%M"))
+
+@bot.on.message_handler(text=["Меню", "Корона"],lower=True)
+async def wrapper(ans: Message):
+    name1_buttons = [[{'text': f'Мир'},
+            {'text': f'Сша', 'color': 'positive'},
+            {'text': f'Россия', 'color': 'primary'}],
+            [{'text': f'Италия', 'color': 'negative'},
+            {'text': f'Китай', 'color': 'secondary'}]]
+    name12_keyboard = keyboard_gen(name1_buttons, one_time=False)
+    await ans('Выберите страну:', keyboard=name12_keyboard)
+    
 info = coronavirus_info()
-main()
 bot.run_polling()
