@@ -17,22 +17,27 @@ def coronavirus_info():
 
 @bot.on.message_handler(text=["Мир"],lower=True)
 async def wrapper(ans: Message):
+    info = coronavirus_info()
     await ans("Весь Мир:ᅠ\n \n Всего заболевших: " + str(info[0].text) + " \n ‍Выздоровело: " + str(info[1].text) + "\n Летальные исходы: " + str(info[2].text) + "\n Время: " + time.strftime("%H:%M"))
 
 @bot.on.message_handler(text=["Сша"],lower=True)
 async def wrapper(ans: Message):
+    info = coronavirus_info()
     await ans("США:ᅠ\n \n Всего заболевших: " + str(info[9].text) + " \n ‍Выздоровело: " + str(info[10].text) + "\n Летальные исходы: " + str(info[11].text) + "\n Время: " + time.strftime("%H:%M"))
 
 @bot.on.message_handler(text=["Россия"],lower=True)
 async def wrapper(ans: Message):
+    info = coronavirus_info()
     await ans("Россия:ᅠ\n \n Всего заболевших: " + str(info[3].text) + " \n ‍Выздоровело: " + str(info[4].text) + "\n Летальные исходы: " + str(info[5].text) + "\n Время: " + time.strftime("%H:%M"))
 
 @bot.on.message_handler(text=["Китай"],lower=True)
 async def wrapper(ans: Message):
+    info = coronavirus_info()
     await ans("Китай:ᅠ\n \n Всего заболевших: " + str(info[6].text) + " \n ‍Выздоровело: " + str(info[7].text) + "\n Летальные исходы: " + str(info[8].text) + "\n Время: " + time.strftime("%H:%M"))
 
 @bot.on.message_handler(text=["Италия"],lower=True)
 async def wrapper(ans: Message):
+    info = coronavirus_info()
     await ans("Италия:ᅠ\n \n Всего заболевших: " + str(info[12].text) + " \n ‍Выздоровело: " + str(info[13].text) + "\n Летальные исходы: " + str(info[14].text) + "\n Время: " + time.strftime("%H:%M"))
 
 @bot.on.message_handler(text=["Меню", "Корона"],lower=True)
